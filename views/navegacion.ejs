@@ -1,0 +1,36 @@
+<header class="nav-bar">
+    <div class="nav-logo pull-left">
+        <a href="/"><img src=/imgs/retro.png alt="YIFY" /></a>
+    </div>
+    <span class="header-slogan hidden-xs pull-left">HD movies at the smallest file size.</span>
+    <div class="main-nav-links hidden-sm hidden-xs">
+        <form method="GET" action="/search-movies" accept-charset="UTF-8" id="quick-search" name="quick-search">
+            <div id="quick-search-container">
+                <input id="quick-search-input" name="query" autocomplete="off" type="search" value="Quick search">
+                <div class="ajax-spinner"></div>
+            </div>
+        </form>
+        <ul class="nav-links">
+            <li><a href="/"> Home </a></li>
+            <li><a href="/browse-movies/0/2160p/all/0/latest/0/all" style="color: #BA68C8"> 4K </a>
+            </li>
+            <li><a href="/trending-movies"> Trending </a></li>
+            <li><a href="/browse-movies"> Browse Movies </a></li>
+        </ul>
+        <ul class="nav-links nav-link-guest">
+            <li><a class="login-nav-btn" href="javascript:void(0)"> Login </a> &nbsp;|&nbsp; <a class="register-nav-btn"
+                    href="javascript:void(0)"> Register </a></li>
+        </ul>
+    </div>
+    <div class="nav-mobile-buttons hidden-md hidden-lg">
+        <a class="touchable" id="mobile-search-btn" href="javascript:void(0)"> <span
+                class="glyphicon glyphicon-search"></span> </a>
+        <a class="touchable" href="/browse-movies/0/2160p/all/0/latest/0/all" style="color: #BA68C8">
+            <b>4K</b> </a>
+        <a class="touchable" href="/trending-movies"> <span class="glyphicon glyphicon-stats"></span>
+        </a>
+        <a class="touchable" href="/browse-movies"> <span class="glyphicon glyphicon-list-alt"></span>
+        </a>
+        <a class="touchable" href="/login"> <span class="glyphicon glyphicon-user"></span> </a>
+    </div>
+</header>

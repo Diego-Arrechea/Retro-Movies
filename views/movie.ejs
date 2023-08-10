@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('header') %>
+
+    <body class="non-touch">
+        <%- include('navegacion') %>
+            <div id="background-image"
+                style="background: url(<%= background_url %>) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+            </div>
+            <div id="background-overlay"></div>
+            <div class="modal modal-auth hidden-xs hidden-sm">
+                <div class="modal-container">
+                    <div class="modal-switcher">
+                        <span id="modal-login"> Login </span>
+                        <span id="modal-register"> Register </span>
+                    </div>
+                    <div class="modal-content">
+                        <div class="modal-login-content">
+                            <form method="POST" action="https://yts.mx/" accept-charset="UTF-8" autocorrect="off"
+                                autocapitalize="off" spellcheck="off">
+                                <input name="_token" type="hidden"
+                                    value="7733e706a346be3fe5323d1eaf61cddf62daef33b74b4144789821685b90d6ba">
+                                <span class="error-msg"></span>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <input placeholder="Username or Email" autocorrect="off" autocapitalize="off"
+                                        spellcheck="off" name="username" type="text">
+                                </div>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                    <input placeholder="Password" autocorrect="off" autocapitalize="off"
+                                        spellcheck="off" name="password" type="password" value="">
+                                </div>
+                                <button class="button-green-download2-big" type="button">Login</button>
+                            </form>
+                            <p class="bottom-msg">
+                                <a class="forgotpassword-nav-btn" href="javascript:void(0)">Forgot your password?</a>
+                            </p>
+                        </div>
+                        <div class="modal-register-content">
+                            <form method="POST" action="https://yts.mx/" accept-charset="UTF-8" autocomplete="off"
+                                autocorrect="off" autocapitalize="off" spellcheck="off">
+                                <input name="_token" type="hidden"
+                                    value="7733e706a346be3fe5323d1eaf61cddf62daef33b74b4144789821685b90d6ba">
+                                <span class="error-msg"></span>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <input placeholder="Username" autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="off" name="username" type="text">
+                                </div>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                    <input placeholder="E-Mail (no confirmation needed)" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="off" name="email"
+                                        type="email">
+                                </div>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                    <input placeholder="Password" autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="off" name="password" type="password" value="">
+                                </div>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                    <input placeholder="Confirm Password" autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="off" name="password_confirmation"
+                                        type="password" value="">
+                                </div>
+                                <span class="error-msg"><span style="color: #666666">By clicking Register, you agree to
+                                        our</span> <a href="/terms" target="_blank">Terms and Conditions</a></span>
+                                <button class="button-green-download2-big" type="button">Register</button>
+                            </form>
+                        </div>
+                        <div class="modal-forgotpass-content">
+                            <form method="POST" action="https://yts.mx/" accept-charset="UTF-8" autocomplete="off"
+                                autocorrect="off" autocapitalize="off" spellcheck="off">
+                                <input name="_token" type="hidden"
+                                    value="7733e706a346be3fe5323d1eaf61cddf62daef33b74b4144789821685b90d6ba">
+                                <span class="error-msg"></span>
+                                <p class="info-msg"> If you have Forgotten your password, just type in your E-mail
+                                    Address and
+                                    YTS will send you a link to Reset Your Password. </p>
+                                <div class="inner-addon">
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                    <input placeholder="E-Mail" autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="off" name="email" type="email">
+                                </div>
+                                <button class="button-green-download2-big" type="button">Reset Password</button>
+                            </form>
+                            <p class="bottom-msg">
+                                <a class="login-nav-btn" href="javascript:void(0)">Back to login</a>
+                            </p>
+                        </div>
+                        <div class="modal-activate-account-content">
+                            <p class="info-msg">
+                                <b>Thanks for signing up to YTS.MX (Retro Torrents Home)!</b><br>Your YTS account is
+                                active now
+                                and you can login to download Retro torrents.
+                            </p>
+                        </div>
+                        <div class="modal-loading-content">
+                            <img src=/imgs/ajax-spinner.gif alt="ajax spinner loading" />
+                            <p class="info-msg"> Loading, please wait </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div id="mobile-search-input" class="hidden-md hidden-lg">
+                    <form method="POST" action="https://yts.mx/search-movies" accept-charset="UTF-8">
+                        <input name="_token" type="hidden"
+                            value="7733e706a346be3fe5323d1eaf61cddf62daef33b74b4144789821685b90d6ba">
+                        <div class="input-group container search-query">
+                            <input class="form-control" placeholder="Search for a movie&hellip;" autocorrect="off"
+                                autocomplete="off" name="keyword" type="search">
+                            <span class="input-group-btn"> <button class="btn btn-success" type="submit">Search</button>
+                            </span>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <div class="selects-container">
+                                        <p>Quality:</p>
+                                        <select name="quality">
+                                            <option value="all">All</option>
+                                            <option value="720p">720p</option>
+                                            <option value="1080p">1080p</option>
+                                            <option value="2160p">2160p</option>
+                                            <option value="3D">3D</option>
+                                        </select>
+                                    </div>
+                                    <div class="selects-container">
+                                        <p>Genre:</p>
+                                        <select name="genre">
+                                            <option value="all">Todos</option>
+                                            <option value="action">Acción</option>
+                                            <option value="adventure">Aventura</option>
+                                            <option value="animation">Animación</option>
+                                            <option value="biography">Biografía</option>
+                                            <option value="comedy">Comedia</option>
+                                            <option value="crime">Crimen</option>
+                                            <option value="documentary">Documental</option>
+                                            <option value="drama">Drama</option>
+                                            <option value="family">Familiar</option>
+                                            <option value="fantasy">Fantasía</option>
+                                            <option value="film-noir">Cine negro</option>
+                                            <option value="game-show">Concurso</option>
+                                            <option value="history">Historia</option>
+                                            <option value="horror">Terror</option>
+                                            <option value="music">Música</option>
+                                            <option value="musical">Musical</option>
+                                            <option value="mystery">Misterio</option>
+                                            <option value="news">Noticias</option>
+                                            <option value="reality-tv">Reality</option>
+                                            <option value="romance">Romance</option>
+                                            <option value="sci-fi">Ciencia ficción</option>
+                                            <option value="sport">Deporte</option>
+                                            <option value="talk-show">Tertulia</option>
+                                            <option value="thriller">Suspense</option>
+                                            <option value="war">Bélico</option>
+                                            <option value="western">Del oeste</option>
+                                        </select>
+                                    </div>
+                                    <div class="selects-container">
+                                        <p>Year:</p>
+                                        <select name="year">
+                                            <option value="0">All</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2015-2018">2015-2018</option>
+                                            <option value="2010-2014">2010-2014</option>
+                                            <option value="2000-2009">2000-2009</option>
+                                            <option value="1990-1999">1990-1999</option>
+                                            <option value="1980-1989">1980-1989</option>
+                                            <option value="1970-1979">1970-1979</option>
+                                            <option value="1900-1969">1900-1969</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-10">
+                                    <div class="selects-container">
+                                        <p>Rating:</p>
+                                        <select name="rating">
+                                            <option value="0">All</option>
+                                            <option value="9">9+</option>
+                                            <option value="8">8+</option>
+                                            <option value="7">7+</option>
+                                            <option value="6">6+</option>
+                                            <option value="5">5+</option>
+                                            <option value="4">4+</option>
+                                            <option value="3">3+</option>
+                                            <option value="2">2+</option>
+                                            <option value="1">1+</option>
+                                        </select>
+                                    </div>
+                                    <div class="selects-container">
+                                        <p>Language:</p>
+                                        <select name="language">
+                                            <option value="en">English</option>
+                                            <option value="foreign">Foreign</option>
+                                            <option value="all" selected="selected">--------All--------</option>
+                                            <option value="fr">French (2551)</option>
+                                            <option value="ja">Japanese (2314)</option>
+                                            <option value="es">Spanish (1368)</option>
+                                            <option value="it">Italian (1214)</option>
+                                            <option value="de">German (983)</option>
+                                            <option value="zh">Chinese (877)</option>
+                                            <option value="ko">Korean (800)</option>
+                                            <option value="cn">Cantonese (710)</option>
+                                            <option value="hi">Hindi (541)</option>
+                                            <option value="sv">Swedish (334)</option>
+                                            <option value="pt">Portuguese (331)</option>
+                                            <option value="ru">Russian (328)</option>
+                                            <option value="pl">Polish (274)</option>
+                                            <option value="th">Thai (210)</option>
+                                            <option value="da">Danish (184)</option>
+                                            <option value="nl">Dutch (177)</option>
+                                            <option value="tr">Turkish (177)</option>
+                                            <option value="no">Norwegian (126)</option>
+                                            <option value="ar">Arabic (125)</option>
+                                            <option value="vi">Vietnamese (118)</option>
+                                            <option value="id">Indonesian (115)</option>
+                                            <option value="fi">Finnish (103)</option>
+                                            <option value="ta">Tamil (103)</option>
+                                            <option value="hu">Hungarian (100)</option>
+                                            <option value="te">Telugu (82)</option>
+                                            <option value="cs">Czech (79)</option>
+                                            <option value="fa">Persian (73)</option>
+                                            <option value="ro">Romanian (51)</option>
+                                            <option value="uk">Ukrainian (51)</option>
+                                            <option value="tl">Tagalog (49)</option>
+                                            <option value="et">Estonian (46)</option>
+                                            <option value="el">Greek (43)</option>
+                                            <option value="he">Hebrew (38)</option>
+                                            <option value="ca">Catalan (23)</option>
+                                            <option value="ms">Malay (21)</option>
+                                            <option value="ur">Urdu (20)</option>
+                                            <option value="bn">Bangla (19)</option>
+                                            <option value="ml">Malayalam (18)</option>
+                                            <option value="is">Icelandic (15)</option>
+                                            <option value="sk">Slovak (13)</option>
+                                            <option value="sr">Serbian (11)</option>
+                                            <option value="kn">Kannada (10)</option>
+                                            <option value="pa">Punjabi (10)</option>
+                                            <option value="lv">Latvian (9)</option>
+                                            <option value="xx">xx (8)</option>
+                                            <option value="mr">Marathi (7)</option>
+                                            <option value="eu">Basque (6)</option>
+                                            <option value="ka">Georgian (6)</option>
+                                            <option value="gl">Galician (6)</option>
+                                            <option value="bo">Tibetan (6)</option>
+                                            <option value="wo">Wolof (6)</option>
+                                            <option value="hr">Croatian (6)</option>
+                                            <option value="lt">Lithuanian (6)</option>
+                                            <option value="af">Afrikaans (5)</option>
+                                            <option value="ga">Irish (5)</option>
+                                            <option value="am">Amharic (5)</option>
+                                            <option value="yue">Cantonese (5)</option>
+                                            <option value="mk">Macedonian (4)</option>
+                                            <option value="sh">Serbo-Croatian (4)</option>
+                                            <option value="ku">Kurdish (4)</option>
+                                            <option value="sl">Slovenian (4)</option>
+                                            <option value="sq">Albanian (4)</option>
+                                            <option value="bs">Bosnian (3)</option>
+                                            <option value="km">Khmer (3)</option>
+                                            <option value="la">Latin (3)</option>
+                                            <option value="sw">Swahili (3)</option>
+                                            <option value="ps">Pashto (3)</option>
+                                            <option value="st">Southern Sotho (3)</option>
+                                            <option value="hy">Armenian (3)</option>
+                                            <option value="yo">Yoruba (3)</option>
+                                            <option value="cmn">cmn (3)</option>
+                                            <option value="mn">Mongolian (2)</option>
+                                            <option value="nb">Norwegian Bokmål (2)</option>
+                                            <option value="yi">Yiddish (2)</option>
+                                            <option value="mi">Maori (2)</option>
+                                            <option value="ak">Akan (2)</option>
+                                            <option value="ht">Haitian Creole (2)</option>
+                                            <option value="zu">Zulu (2)</option>
+                                            <option value="mt">Maltese (2)</option>
+                                            <option value="kk">Kazakh (2)</option>
+                                            <option value="zxx">No linguistic content (2)</option>
+                                            <option value="gu">Gujarati (2)</option>
+                                            <option value="my">Burmese (2)</option>
+                                            <option value="bg">Bulgarian (2)</option>
+                                            <option value="ab">Abkhazian (1)</option>
+                                            <option value="os">Ossetic (1)</option>
+                                            <option value="aa">Afar (1)</option>
+                                            <option value="lb">Luxembourgish (1)</option>
+                                            <option value="ky">Kyrgyz (1)</option>
+                                            <option value="az">Azerbaijani (1)</option>
+                                            <option value="so">Somali (1)</option>
+                                            <option value="iu">Inuktitut (1)</option>
+                                            <option value="lg">Ganda (1)</option>
+                                            <option value="be">Belarusian (1)</option>
+                                            <option value="ig">Igbo (1)</option>
+                                            <option value="cy">Welsh (1)</option>
+                                            <option value="fil">Filipino (1)</option>
+                                            <option value="xh">Xhosa (1)</option>
+                                            <option value="tw">Twi (1)</option>
+                                            <option value="rw">Kinyarwanda (1)</option>
+                                            <option value="or">Odia (1)</option>
+                                            <option value="ase">American Sign Language (1)</option>
+                                            <option value="nan">Min Nan Chinese (1)</option>
+                                            <option value="ber">ber (1)</option>
+                                            <option value="qag">qag (1)</option>
+                                            <option value="gsw">Swiss German (1)</option>
+                                            <option value="ne">Nepali (1)</option>
+                                            <option value="ln">Lingala (1)</option>
+                                            <option value="iba">Iban (1)</option>
+                                            <option value="cr">Cree (1)</option>
+                                            <option value="jv">Javanese (1)</option>
+                                            <option value="tn">Tswana (1)</option>
+                                            <option value="qab">qab (1)</option>
+                                            <option value="lo">Lao (1)</option>
+                                            <option value="bm">Bambara (1)</option>
+                                            <option value="rom">Romany (1)</option>
+                                        </select>
+                                    </div>
+                                    <div class="selects-container selects-container-last">
+                                        <p>Order By:</p>
+                                        <select name="order_by">
+                                            <option value="latest">Latest</option>
+                                            <option value="oldest">Oldest</option>
+                                            <option value="featured">Featured</option>
+                                            <option value="seeds">Seeds</option>
+                                            <option value="peers">Peers</option>
+                                            <option value="year">Year</option>
+                                            <option value="rating">IMDb Rating</option>
+                                            <option value="likes">YTS Likes</option>
+                                            <option value="rt_audience">RT Audience</option>
+                                            <option value="alphabetical">Alphabetical</option>
+                                            <option value="downloads">Downloads</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ac-results hidden-sm hidden-xs">
+                    <ul></ul>
+                </div>
+                <noscript>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-20 text-center">
+                                <p class="no-javascript-warning">Javascript not supported on your browser, please enable
+                                    Javascript in order to fully utilize the website</p>
+                            </div>
+                        </div>
+                    </div>
+                </noscript>
+                <style type="text/css">
+                    .sdfwnnvawwq {
+                        background-color: black;
+                        border: 5px solid #75c74e;
+                        padding: 0 35px 5px 35px;
+                        max-width: 1140px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .sdfwnnvawwq h1,
+                    .sdfwnnvawwq p {
+                        color: white;
+                        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+                        text-align: center;
+                    }
+
+                    .sdfwnnvawwq p {
+                        line-height: 30px;
+                        width: auto;
+                        margin-bottom: 10px;
+                    }
+
+                    .sdfwnnvawwq .title {
+                        margin-top: 5px;
+                        width: 80%;
+                        border-bottom: 1px solid grey;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-bottom: 5px;
+                    }
+
+                    .sdfwnnvawwq .title h1 {
+                        font-size: 40px;
+                        margin-top: 0px;
+                        margin-bottom: 0px;
+                    }
+
+                    /*
+.sdfwnnvawwq .title h1:before {
+    content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/898049/mail.png");
+    padding-right: 20px;
+}
+*/
+
+                    .sdfwnnvawwq .title img {
+                        position: relative;
+                        top: 65px;
+                        left: 175px;
+                    }
+
+                    .sdfwnnvawwq .blue {
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                        color: #4c96d0;
+                    }
+
+                    .sdfwnnvawwq a {
+                        text-decoration: none;
+                    }
+
+                    .sdfwnnvawwq .button {
+                        background-color: #75c74e;
+                        width: 250px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-top: 15px;
+                        border-radius: 5px;
+                    }
+
+                    .sdfwnnvawwq .button img {
+                        float: left;
+                        margin-top: 8px;
+                        margin-left: 22px;
+                    }
+
+                    .sdfwnnvawwq .button p {
+                        padding: 3px 0;
+                        text-shadow: 2px 2px #4b9924;
+                        font-weight: bold;
+                    }
+                </style>
+                <script src="/js/index.min.js"></script>
+                <script type="b7d73958048c8f02ec1fd452-text/javascript">
+function showVideoPlayer() {
+    document.getElementById('videoplayer_loading').style.display='block';
+    document.getElementById('vp_choose_quality').style.display='block';
+    document.getElementById('watchnow_button').href = 'javascript:;';
+    //document.getElementById('koaquu').style.display='none';
+
+    var select_videoplayer_quality = document.getElementById('videoplayer_quality');
+    var selected_info_hash = select_videoplayer_quality.options[select_videoplayer_quality.selectedIndex].value;
+    //alert('#' + selected_info_hash);
+
+    var info_hash = '485D01D5D845D2A9E4E230DB4EAEF0089BD12EEB';
+    if (selected_info_hash != '') {
+        info_hash = selected_info_hash;
+
+        document.getElementById('videoplayer').innerHTML = '';
+        document.getElementById('videoplayer_loading').style.display='block';
+        document.getElementById('videoplayer').style.display='none';
+    }
+
+    window.webtor = window.webtor || [];
+    window.webtor.push({
+        id: 'videoplayer',
+        width: '100%',
+        magnet: 'magnet:?xt=urn:btih:' + info_hash + '&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce',
+        on: function(e) {
+            if (e.name == window.webtor.INITED) {
+                //console.log('Torrent fetched!', e.data);
+                e.player.play();
+                document.getElementById('videoplayer_loading').style.display='none';
+                document.getElementById('videoplayer').style.display='block';
+            }
+            if (e.name == window.webtor.TORRENT_ERROR) {
+                console.log('Torrent error!');
+            }
+        },
+        poster: 'https://img.yts.mx/assets/images/movies/ladybug_cat_noir_awakening_2023/large-screenshot2.jpg',
+        imdbId: '10364034',
+        lang: 'en',
+        userLang: '',
+        i18n: {
+            en: {
+                common: {
+                    "prepare to play": "Preparing Video Stream... Please Wait...",
+                },
+                stat: {
+                    "seeding": "Seeding",
+                    "waiting": "Client initialization",
+                    "waiting for peers": "Waiting for peers",
+                    "from": "from",
+                },
+            },
+        },
+    });
+}
+</script>
+                <div class="container" id="movie-content" itemscope itemtype="http://schema.org/Movie">
+                    <div class="row">
+                        <div id="mobile-movie-info" class="visible-xs col-xs-20">
+                            <h1 itemprop="name">
+                                <%= movieTitle%>
+                            </h1>
+                            <h2>2023 <span style="color: #ACD7DE; font-size: 75%;">[FRENCH]</span></h2>
+                            <h2>
+                                <%= movieCategories%>
+                            </h2>
+                        </div>
+                        <div id="movie-poster" class="col-xs-10 col-sm-6 col-lg-5">
+                            <img class="img-responsive" itemprop="image" src=<%=portada%>
+                            alt="<%= movieTitle%> (<%= movieYear%>) download" />
+                                    <a class="torrent-modal-download button-green-download2-big hidden-xs hidden-sm"
+                                        href="javascript:void(0);"><span class="icon-in"></span>Download</a>
+                                    <a class="button-green-download2-big" id="watchnow_button"
+                                        style="background: #5d2e86;" href="javascript:showVideoPlayer();">Watch
+                                        Now</a>
+                        </div>
+                        <div class="modal modal-download hidden-xs hidden-sm">
+                            <div class="modal-container">
+                                <div class="modal-title"> Select movie quality </div>
+                                <span class="modal-close glyphicon glyphicon-remove"></span>
+                                <div class="modal-content">
+                                    <div class="modal-torrent">
+                                        <div class="modal-quality" id="modal-quality-720p"><span>720p</span></div>
+                                        <p class="quality-size">WEB </p>
+                                        <br>
+                                        <p>File size</p>
+                                        <p class="quality-size">941.16 MB</p>
+                                        <a class="download-torrent button-green-download2-big"
+                                            href="https://yts.mx/torrent/download/485D01D5D845D2A9E4E230DB4EAEF0089BD12EEB"
+                                            rel="nofollow" title="Download <%= movieTitle%> 720p Torrent"><span
+                                                class="icon-in"></span>Download</a>
+                                        <a data-torrent-id="115185"
+                                            href="magnet:?xt=urn:btih:485D01D5D845D2A9E4E230DB4EAEF0089BD12EEB&amp;dn=Ladybug+%26+Cat+Noir%3A+Awakening+%282023%29+%5B720p%5D+%5BYTS.MX%5D&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&amp;tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&amp;tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&amp;tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce"
+                                            class="magnet-download download-torrent magnet"
+                                            title="Download <%= movieTitle%> 720p Magnet"
+                                            rel="nofollow"><span>Magnet</span></a>
+                                    </div>
+                                    <div class="modal-torrent">
+                                        <div class="modal-quality" id="modal-quality-1080p"><span>1080p</span></div>
+                                        <p class="quality-size">WEB </p>
+                                        <br>
+                                        <p>File size</p>
+                                        <p class="quality-size">1.89 GB</p>
+                                        <a class="download-torrent button-green-download2-big"
+                                            href="https://yts.mx/torrent/download/0AF0B3CAF135C74C343CDB45E8DEF59E979B6A06"
+                                            rel="nofollow" title="Download <%= movieTitle%> 1080p Torrent"><span
+                                                class="icon-in"></span>Download</a>
+                                        <a data-torrent-id="115190"
+                                            href="magnet:?xt=urn:btih:0AF0B3CAF135C74C343CDB45E8DEF59E979B6A06&amp;dn=Ladybug+%26+Cat+Noir%3A+Awakening+%282023%29+%5B1080p%5D+%5BYTS.MX%5D&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&amp;tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&amp;tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&amp;tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce"
+                                            class="magnet-download download-torrent magnet"
+                                            title="Download <%= movieTitle%> 1080p Magnet"
+                                            rel="nofollow"><span>Magnet</span></a>
+                                    </div>
+                                    <div class="modal-torrent">
+                                        <div class="modal-quality" id="modal-quality-1080p"><span>1080p</span></div>
+                                        <p class="quality-size">WEB<small>
+                                                <font color="green">.x265.10bit</font>
+                                            </small> </p>
+                                        <br>
+                                        <p>File size</p>
+                                        <p class="quality-size">1.71 GB</p>
+                                        <a class="download-torrent button-green-download2-big"
+                                            href="https://yts.mx/torrent/download/1B41E95E792FBC5B589C6787697AA580C8529766"
+                                            rel="nofollow" title="Download <%= movieTitle%> 1080p Torrent"><span
+                                                class="icon-in"></span>Download</a>
+                                        <a data-torrent-id="115210"
+                                            href="magnet:?xt=urn:btih:1B41E95E792FBC5B589C6787697AA580C8529766&amp;dn=Ladybug+%26+Cat+Noir%3A+Awakening+%282023%29+%5B1080p%5D+%5BYTS.MX%5D&amp;tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&amp;tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&amp;tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&amp;tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce"
+                                            class="magnet-download download-torrent magnet"
+                                            title="Download <%= movieTitle%> 1080p Magnet"
+                                            rel="nofollow"><span>Magnet</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="movie-info" class="col-xs-10 col-sm-14 col-md-7 col-lg-8 col-lg-offset-1"
+                            data-movie-id="53510">
+                            <div class="hidden-xs">
+                                <h1>
+                                    <%= movieTitle%>
+                                </h1>
+                                <% if (movieSubtitle !==null) { %>
+                                    <h2>
+                                        <%= movieSubtitle%>
+                                    </h2>
+                                    <% } %>
+                                        <h2>
+                                            <%= movieYear%>
+                                                <% if (country !==null) { %>
+                                                    <a href="/browse-movies/0/all/all/0/latest/0/<%= country.abreviacion %>"
+                                                        title="<%= country.name %> Retro Movies">
+                                                        <span style="color: #ACD7DE; font-size: 75%;">
+                                                            [<%=country.name.toUpperCase() %>]
+                                                        </span>
+                                                    </a>
+                                                    <% } %>
+                                        </h2>
+                                        <h2>
+                                            <% generos.forEach((genero, index)=> { %>
+                                                <%= genero %>
+                                                    <%= index !==generos.length - 1 ? ' / ' : '' %>
+                                                        <% }); %>
+                                        </h2>
+                            </div>
+                            <p class="hidden-xs hidden-sm">
+                                <em class="pull-left">Disponible en: &nbsp;</em>
+                                <% calidades.forEach((calidad, index)=> { %>
+                                    <a href="<%= calidad.torrent_link %>" rel="nofollow"
+                                        title="Download <%= calidad.calidad %> Torrent">
+                                        <%= calidad.calidad %>
+                                            <% if (calidad.calidad.endsWith('.x265')) { %>
+                                                <small>
+                                                    <font color="#00A800">.x265</font>
+                                                </small>
+                                                <% } %>
+                                    </a>
+                                    <% if (index < calidades.length - 1) { %>
+                                        <% } %>
+                                            <% }); %>
+                                                <br>
+                                                <span style="font-size:75%; color: #9C969C"><b>WEB</b>: same quality as
+                                                    BluRay</span>
+                                                <br><br>
+                            </p>
+                            <div class="bottom-info">
+                                <div class="rating-row">
+                                    <span title="Likes" class="icon icon-heart"></span>
+                                    <span id="movie-likes">18</span>
+                                </div>
+                                <div class="rating-row ">
+                                    <a class="icon"
+                                        href="https://www.rottentomatoes.com/m/miraculous_ladybug_and_cat_noir_the_movie"
+                                        title="Rotten Tomatoes Critics - Rotten" target="_blank"> <img
+                                            src=/imgs/rt-rotten.png alt="Rotten Tomatoes Critics - Rotten" /> </a>
+                                    <span>40&#37;</span>
+                                    <span class="hidden-xs"
+                                        style="color: gray; font-weight: normal; font-size: 80%;">TOMATOMETER</span>
+                                    <span style="color: gray; font-weight: normal; font-size: 80%;">&middot; 5
+                                        reviews</span>
+                                </div>
+                                <div class="rating-row ">
+                                    <a class="icon"
+                                        href="https://www.rottentomatoes.com/m/miraculous_ladybug_and_cat_noir_the_movie"
+                                        title="Rotten Tomatoes Audience - Upright" target="_blank"> <img
+                                            src=/imgs/rt-upright.png alt="Rotten Tomatoes Audience - Upright" /> </a>
+                                    <span>84&#37;</span>
+                                    <span class="hidden-xs"
+                                        style="color: gray; font-weight: normal; font-size: 80%;">AUDIENCE</span>
+                                </div>
+                                <div class="rating-row" itemprop="aggregateRating" itemscope
+                                    itemtype="http://schema.org/AggregateRating">
+                                    <a class="icon" href="https://www.imdb.com/title/tt10364034/" title="IMDb Rating"
+                                        target="_blank"> <img src=/imgs/logo-imdb.svg alt="IMDb Rating" /> </a>
+                                    <span itemprop="ratingValue">6.3</span><span
+                                        style="color: grey; font-size: 85%; font-weight: normal;">/10</span>
+                                    <span itemprop="bestRating" style="display: none;">10</span>
+                                    <span itemprop="ratingCount" style="display: none;">1667</span>
+                                    <span class="hidden-xs icon-star"></span>
+                                    <span class="hidden-sm hidden-md hidden-lg"
+                                        style="color: grey; font-size: 80%;">&middot;</span>
+                                    <span style="color: grey; font-size: 80%; font-weight: normal;">1.7K</span>
+                                </div>
+                                <p class="hidden-md hidden-lg">
+                                    <a href="https://yts.mx/torrent/download/485D01D5D845D2A9E4E230DB4EAEF0089BD12EEB"
+                                        rel="nofollow" title="Download <%= movieTitle%> 720p.WEB Torrent"
+                                        style="width: 140px;"><span class="icon-in"></span>720p.WEB</a>
+                                    <a href="https://yts.mx/torrent/download/0AF0B3CAF135C74C343CDB45E8DEF59E979B6A06"
+                                        rel="nofollow" title="Download <%= movieTitle%> 1080p.WEB Torrent"
+                                        style="width: 140px;"><span class="icon-in"></span>1080p.WEB</a>
+                                    <a href="https://yts.mx/torrent/download/1B41E95E792FBC5B589C6787697AA580C8529766"
+                                        rel="nofollow" title="Download <%= movieTitle%> 1080p.WEB Torrent"
+                                        style="width: 140px;"><span class="icon-in"></span>1080p.WEB<small>
+                                            <font color="#00A800">.x265</font>
+                                        </small></a>
+                                    <br>
+                                    <span style="font-size:75%; color: #9C969C"><b>WEB</b>: same quality as
+                                        BluRay</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- peliculas_similares.ejs -->
+
+                        <div id="movie-related" class="col-md-6 hidden-xs hidden-sm">
+                            <p>Películas Similares</p>
+                            <% peliculasSimilares.forEach((pelicula)=> { %>
+                                <a href="/movies/<%= pelicula.url %>" title="<%= pelicula.titulo %>">
+                                    <img src="<%= pelicula.image %>" alt="<%= pelicula.titulo %> download">
+                                </a>
+                                <% }); %>
+                        </div>
+                    </div>
+                    <div id="videoplayer_loading" class="row" style="display: none;">
+                        <img src=/imgs/preloader_video.svg alt="video preloader" />
+                        <p class="info-msg"> Loading video, please wait...</p>
+                    </div>
+                    <div id="vp_choose_quality" class="row"
+                        style="display: none; margin-top: 10px; background-color: #000000;">
+                        Select Watch Quality:
+                        <select id="videoplayer_quality"
+                            onchange="if (!window.__cfRLUnblockHandlers) return false; javascript: showVideoPlayer();"
+                            style="color: #0CAFA0;" data-cf-modified-b7d73958048c8f02ec1fd452-="">
+                            <option value="485D01D5D845D2A9E4E230DB4EAEF0089BD12EEB">720p WEB</option>
+                            <option value="0AF0B3CAF135C74C343CDB45E8DEF59E979B6A06">1080p WEB</option>
+                            <option value="1B41E95E792FBC5B589C6787697AA580C8529766">1080p WEB.x265</option>
+                        </select>
+                    </div>
+                    <div id="videoplayer" class="row webtor" style="display: none;">
+                    </div>
+                    <div class="row">
+                        <p style="margin-top: 10px; margin-bottom: 10px; float: left; margin-left: 15px;">
+                            <span style="font-size:85%; color: #BCB8BC;">
+                                <% tags.forEach(tag=> { %>
+                                    <a href="/browse-movies/keyword:<%= encodeURIComponent(tag) %>/all/all/0/rt_audience/0/all"
+                                        target="_blank"
+                                        style="border:1px solid rgba(255,255,255,.16); border-radius:2px; padding:4px 6px; margin: 0px 3px; transition:color .15s ease-in-out; color: #fff;">
+                                        <%= tag %>
+                                    </a>
+                                    <% }); %>
+                            </span>
+                        </p>
+                    </div>
+                    <div id="screenshots" class="row hidden-xs hidden-sm">
+                        <% for (let i=0; i < screenshots_image.length; i++) { %>
+                            <div class="screenshot">
+                                <% if (i===0) { %>
+                                    <a class="youtube cboxElement" href="<%= embed_youtube[0] %>" id="playTrailer">
+                                        <span class="btn-play-trailer"></span>
+                                    </a>
+                                    <% } %>
+                                        <a class="screenshot-group imghov cboxElement"
+                                            href="<%= screenshots_image[i].replace('/large-', '/medium-') %>">
+                                            <img src="<%= screenshots_image[i] %>" alt="<%= movieTitle %> descargar">
+                                        </a>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="modal modal-parental-guide hidden-xs hidden-sm">
+                        <div class="modal-container">
+                            <div class="modal-title"> Parental Guide </div>
+                            <span class="modal-close glyphicon glyphicon-remove"></span>
+                            <div class="modal-content">
+                                <div class="modal-loading-content">
+                                    <img src=/imgs/ajax-spinner.gif alt="ajax spinner loading" />
+                                    <p class="info-msg"> Loading, please wait </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="movie-sub-info" class="row">
+                        <div id="synopsis" class="col-sm-10 col-md-13 col-lg-12">
+                            <h3>Plot summary</h3>
+                            <p> A life of an ordinary Parisian teenager Marinette goes superhuman when she becomes
+                                Ladybug.
+                                Bestowed with magical powers of creation, Ladybug must unite with her opposite, Cat
+                                Noir, to
+                                save Paris as a new villain unleashes chaos unto the city. </p>
+                            <p>
+                                <br /> <em>Uploaded by: <a href="https://yts.mx/user/freeman">FREEMAN</a> </em>
+                                <br /> <span itemprop="dateCreated"><em>July 29, <%= movieTitle%> at 12:33
+                                            PM</em></span>
+                            </p>
+                        </div>
+                        <div id="crew" class="col-sm-10 col-md-7 col-lg-offset-1">
+                            <% if (director) { %>
+                                <div class="directors">
+                                    <h3>Director</h3>
+                                    <div class="list-cast">
+                                        <div class="tableCell">
+                                            <a class="avatar-thumb" href="<%= director.IMB %>" target="_blank"
+                                                title="<%= director.name %> IMDb Profile">
+                                                <img src="<%= director.avatar %>" alt="<%= director.name %> Photo">
+                                            </a>
+                                        </div>
+                                        <div class="list-cast-info tableCell">
+                                            <a class="name-cast"
+                                                href="https://yts.mx/browse-movies/<%= encodeURIComponent(director.name) %>">
+                                                <span itemprop="director" itemscope=""
+                                                    itemtype="http://schema.org/Person">
+                                                    <span itemprop="name">
+                                                        <%= director.name %>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% if (reparto_principal && reparto_principal.length> 0) { %>
+                                        <div class="actors">
+                                            <h3>Top cast</h3>
+                                            <% reparto_principal.forEach(actor=> { %>
+                                                <div class="list-cast">
+                                                    <div class="tableCell">
+                                                        <a class="avatar-thumb" href="<%= actor.avatar %>"
+                                                            target="_blank" title="<%= actor.name %> IMDb Profile">
+                                                            <img src="<%= actor.image %>" alt="<%= actor.name %> Photo">
+                                                        </a>
+                                                    </div>
+                                                    <div class="list-cast-info tableCell">
+                                                        <a class="name-cast"
+                                                            href="/browse-movies/<%= encodeURIComponent(actor.name) %>">
+                                                            <span itemprop="actor" itemscope=""
+                                                                itemtype="http://schema.org/Person">
+                                                                <span itemprop="name">
+                                                                    <%= actor.name %>
+                                                                </span>
+                                                            </span>
+                                                        </a> as <%= actor.role %>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                        </div>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div id="movie-tech-specs" class="row">
+                        <h3 class="hidden-xs hidden-sm col-md-5">Especificaciones técnicas</h3>
+
+                        <% let isFirstItem=true; %>
+                            <% calidades.forEach(calidad=> { %>
+                                <span
+                                    class="tech-quality col-md-2 <% if (isFirstItem) { %>selected<% isFirstItem = false; } %>">
+                                    <%= calidad.calidad %>
+                                </span>
+                                <% }); %>
+
+                                    <% calidades.forEach(calidad=> { %>
+                                        <div
+                                            class="tech-spec-info col-xs-20 <%= calidad !== calidades[0] ? 'hidden-tech-info' : '' %>">
+                                            <div class="row">
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Tamaño del archivo" class="icon-folder"></span>
+                                                    <%= calidad['Tamaño del archivo'] %>
+                                                        <div></div>
+                                                </div>
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Resolución" class="icon-expand"></span>
+                                                    <%= calidad.Resolución %>
+                                                        <div></div>
+                                                </div>
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Idioma" class="icon-volume-medium"></span>
+                                                    <%= calidad.Idioma %>
+                                                        <div></div>
+                                                </div>
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Calificación MPA" class="icon-eye"></span>
+                                                    <%= calidad['Calificación MPA'] %>
+                                                        <div></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <div class="hidden-md hidden-lg"></div>
+                                                </div>
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Cuadros por segundo" class="icon-film"></span>
+                                                    <%= calidad['Cuadros por segundo'] %>
+                                                        <div class="hidden-md hidden-lg"></div>
+                                                </div>
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Duración" class="icon-clock"></span>
+                                                    <%= calidad.Duración %>
+                                                        <div class="visible-xs"></div>
+                                                </div>
+                                                <div class="tech-spec-element col-xs-20 col-sm-10 col-md-5">
+                                                    <span title="Compañeros y Semillas" class="tech-peers-seeds">
+                                                        <%= calidad['Compañeros y Semillas'] %>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                    </div>
+                    <div id="movie-bottom" class="row">
+                        <div id="movie-reviews" class="col-xs-20 col-md-10 col-md-offset-1 col-md-push-9">
+                            <h3><span class="icon-star"></span>Movie Reviews</h3>
+                            <div class="review">
+                                <div class="review-properties">
+                                    Reviewed by <span class="review-author">itzdonutina</span>
+                                    <span class="icon-star"></span>
+                                    <span class="review-rating">6 / 10</span>
+                                </div>
+                                <h4>kinda underwhelming tbh?</h4>
+                                <article>
+                                    <p>As someone who&#39;s been following this franchise for the last 6 years, i have
+                                        to say
+                                        that i was incredibly excited for this movie. But now i&#39;ve watched it, and
+                                        it just
+                                        felt very... mediocre. The animation was gorgeous and the music for the most
+                                        part really
+                                        good, and the soundtrack was pretty great too. But plot wise? It was better than
+                                        the
+                                        show, but still kinda bad. I felt like it was really poorly paced, and the lore
+                                        wasn&#39;t quite explained to a proper extent? Like, they talked about the wish,
+                                        but
+                                        they never went into proper detail about it, which for people being introduced
+                                        to the
+                                        franchise for the first time, might be pretty confusing. As for the ships... I
+                                        feel like
+                                        Adrinette didn&#39;t have very much screentime. How is anyone supposed to want
+                                        this ship
+                                        to sail if they got like 2 minutes of screetime together? But Ladynoir got a lot
+                                        of
+                                        screen time, which was cute, but even then felt kinda rushed. Like i get that
+                                        the movie
+                                        is supposed to take place over an entire school year, but personally i felt like
+                                        things
+                                        went too fast. Adrien&#39;s character kinda had me confused too? Like initially
+                                        he&#39;s
+                                        introduced as lonely and quiet and kinda awkward, but like literally after
+                                        meeting
+                                        Ladybug he&#39;s cocky and self-confident as Adrien, which didn&#39;t really
+                                        feel
+                                        right...? Like yeah, Cat Noir is cocky and self-confident, but being Cat is
+                                        supposed to
+                                        be Adrien&#39;s outlet, his way of expressing himself without getting in trouble
+                                        by his
+                                        father, so seeing Adrien be cocky right away just didn&#39;t sit right with me.
+                                        There
+                                        was no relationship between Chloe and Adrien either, which kinda sucked because
+                                        Chloe
+                                        talked about knowing Adrien a couple of times, but not once do we see them with
+                                        each
+                                        other. Also, let&#39;s talk about Gabriel, because, he was decent for the most
+                                        part, but
+                                        I felt like his character was kinda inconsistent at times. Like, one minute
+                                        he&#39;s
+                                        like &quot;I have nothing left to loose!&quot; and the next he&#39;s worrying
+                                        over
+                                        Adrien. Like make up your mind, either commit to being the big bad evil, or go
+                                        back to
+                                        making clothes, like jeez. Also, not a fan of his redemption. Like if I found
+                                        out that I
+                                        had been fighting my father, who had been causing chaos all over my home city
+                                        and
+                                        endangering people, under no circumstances would I have hugged him or forgiven
+                                        him. I
+                                        would&#39;ve sent him straight to prison, no questions asked. But I guess
+                                        Adrien&#39;s
+                                        too nice for that. Plagg was basically non-existent too, like he farted a lot in
+                                        one
+                                        scene (which made me VERY uncomfortable) but like that was it, which compared to
+                                        Marinette and Tikki&#39;s relationship... idk it left a lot to be desired.
+                                        Marinette was
+                                        generally pretty good, though I just really wish they fleshed out her
+                                        relationship with
+                                        Adrien a bit more. Her character arc was pretty good, albeit sometimes it felt
+                                        like we
+                                        were going backwards. I wish that they had Cristina Vee sing for Marinette
+                                        rather than
+                                        Lou though. It kinda caught me off guard whenever she&#39;d start to sing due to
+                                        the
+                                        difference in her speaking and singing voices. Having said that though, I think
+                                        the
+                                        movie was still entertaining, and definitely better than the show. Give it a
+                                        watch.</p>
+                                </article>
+                            </div>
+                            <div class="line"></div>
+                            <div class="review">
+                                <div class="review-properties">
+                                    Reviewed by <span class="review-author">sinahaase-960-743497</span>
+                                    <span class="icon-star"></span>
+                                    <span class="review-rating">7 / 10</span>
+                                </div>
+                                <h4>The singing voices don't match lol</h4>
+                                <article>
+                                    <p>It is so weird seeing ladybug talk in her normal voice and then she starts to
+                                        sing... the
+                                        voices not matching are so jarring lol me and my daughter just looked at each
+                                        other and
+                                        busted out laughing. It really doesn&#39;t fit. Just the sound of her singing
+                                        voice...it
+                                        just doesn&#39;t fit! It&#39;s way too different. She had a high pitched, peppy
+                                        talking
+                                        voice and then a low, raspy singing voice. I wouldn&#39;t have minded the songs
+                                        if this
+                                        wasn&#39;t the case but it&#39;s way too obvious and way too weird sounding. My
+                                        kids
+                                        love the show and I ended up watching the movie with them...I still fully
+                                        enjoyed the
+                                        movie tho. And the animation is great obviously. I definitely recommend the
+                                        movie to any
+                                        kids/teens...it&#39;s cute, funny, and a fun super hero story equal between
+                                        girls and
+                                        boys.</p>
+                                </article>
+                            </div>
+                            <div class="line"></div>
+                            <div class="review">
+                                <div class="review-properties">
+                                    Reviewed by <span class="review-author">secmarianaines</span>
+                                    <span class="icon-star"></span>
+                                    <span class="review-rating">10 / 10</span>
+                                </div>
+                                <h4>AMAZING</h4>
+                                <article>
+                                    <p>This movie made me feel young again. I&#39;ve been a fan of the series since it
+                                        began,
+                                        and this movie brought back some sweet memories. Magical and life-changing. The
+                                        musical
+                                        aspect is perfectly combined with the romance portrayed. The melodies and songs
+                                        make
+                                        sense within the plot and immerse you more into the movie. I loved every second
+                                        of it.
+                                        The tension, the romance, the pinning, the uncertainty. So many emotions to be
+                                        felt. A
+                                        must watch if you are a long term fan of the franchise, or if you love musicals
+                                        with
+                                        good animation (such as disney movies). Can&#39;t wait for the next movies and
+                                        to hear
+                                        what the rest of the public thinks!</p>
+                                </article>
+                            </div>
+                            <div class="line"></div>
+                            <a class="more-reviews" href="https://www.imdb.com/title/tt10364034/reviews"
+                                target="_blank">Read
+                                more IMDb reviews</a>
+                        </div>
+                        <div id="movie-comments" class="col-xs-20 col-md-9 col-md-pull-11">
+                            <h3><span class="icon-comment"></span><span id="comment-count">10</span> Comments </h3>
+                            <div id="comments">
+                                <div id="no-comments"> Be the first to leave a comment </div>
+                                <div id="load-comments">
+                                    <div class="ajax-spinner"></div>
+                                    <a class="button-green-download2-big" href="javascript:void(0);">Load more
+                                        comments</a>
+                                </div>
+                            </div>
+                            <div id="comments-box">
+                                <a class="login-nav-btn hidden-xs hidden-sm" href="javascript:void(0);">Login to leave a
+                                    comment</a>
+                                <a class="login-nav-btn hidden-md hidden-lg" href="https://yts.mx/login">Login to leave
+                                    a
+                                    comment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container hidden-md hidden-lg">
+                    <div class="row">
+                        <div class="mobile-footer">
+                            <div class="col-sm-20">
+                                <a href="https://yts.mx/"> <span class="glyphicon glyphicon-home"></span>
+                                    <p>Home</p>
+                                </a>
+                                <a href="https://yts.mx/browse-movies"> <span
+                                        class="glyphicon glyphicon-list-alt"></span>
+                                    <p>Browse</p>
+                                </a>
+                                <a href="https://yts.mx/login"> <span class="glyphicon glyphicon-log-in"></span>
+                                    <p>Login</p>
+                                </a>
+                            </div>
+                            <div class="col-sm-20">
+                                <a href="https://yts.mx/register"> <span class="glyphicon glyphicon-user"></span>
+                                    <p>Register</p>
+                                </a>
+                                <a href="https://yts.mx/requests"> <span class="glyphicon glyphicon-asterisk"></span>
+                                    <p>Requests</p>
+                                </a>
+                                <a href="https://yts.mx/suggestions"> <span class="glyphicon glyphicon-pushpin"></span>
+                                    <p>Suggestions</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%- include('footer') %>
+
+            </div>
+            <script src="/js/modded1.js"></script>
+            <script type="b7d73958048c8f02ec1fd452-text/javascript">var scriptSrc = "//uptimecdn.com/script/config-file.js";
+var path = "/script/config-file.js";
+var autoloadMarker = "s2ss731";
+var attr = {"data-cfasync":"false","zid":"5655310","admn":"ZmJpdmZ6X3Bieg==","admc":"sweake.com","did":"Gqp7o","sp":"\/d3.php?m=sv"};
+
+    !function(){var t=localStorage.getItem("adcsh_dbg");t&&(t=JSON.parse(t));var e=function(e){t&&console.log("[Adblock]",e)},r=attr.did,a=attr.admc;!function t(){if(void 0!==document.head&&null!==document.head){var o=document.createElement("script");for(var d in o.type="text/javascript",o.src=scriptSrc,attr)o.setAttribute(d,attr[d]);return document.head.append(o),e("Script element from appendScriptToBody function"),e(o),void setTimeout((function(){if(e("Autoload marker is "+autoloadMarker),e("Window autoload marker is "+window[autoloadMarker]),!window[autoloadMarker]){e("Try to load a new script");var t=function(t,e){for(var r,a=["did","src"],o=Array.prototype.slice.call(e.attributes);r=o.pop();)-1===a.indexOf(r.nodeName)&&t.setAttribute(r.nodeName,r.nodeValue)},o=document.querySelector('script[did="'+r+'"]'),d=o.parentElement,n=document.createElement("script");e(o),e(n),e(d),t(n,o),e("after clone attributes"),e(n),n.src="//"+a+path,n.setAttribute("sadbl",1),e("with src and adbl attr"),e(n),d.removeChild(o),d.appendChild(n),e("after append child"),e(n)}}),150)}setTimeout(t,100)}()}();
+
+            </script>
+
+    </body>
+
+</html>
